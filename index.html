@@ -1,238 +1,924 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Estética Mavi | LED Day em Ituverava-SP</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estética Mavi | LED Day e Estética Facial em Ituverava-SP</title>
+  <meta name="description" content="Estética Mavi em Ituverava-SP. LED Day (R$90), limpeza de pele, hidratação, rejuvenescimento, peeling e mais. Agende pelo WhatsApp." />
+  <meta name="theme-color" content="#f2c9d4" />
 
-<meta name="description" content="LED Day terapêutico por R$90 na Estética Mavi em Ituverava-SP. Agende pelo WhatsApp.">
+  <style>
+    :root{
+      --bg:#0b0b10;
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --brand:#f2c9d4;
+      --brand2:#c9f2e5;
+      --ok:#25D366;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:26px;
+      --max:1100px;
+    }
 
-<style>
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#0b0b10;
-color:#fff;
-}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(242,201,212,.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 15%, rgba(201,242,229,.14), transparent 55%),
+        radial-gradient(700px 400px at 50% 100%, rgba(242,201,212,.10), transparent 60%),
+        linear-gradient(180deg, #07070b 0%, #0b0b10 100%);
+      overflow-x:hidden;
+    }
 
-header{
-background:#111;
-padding:15px;
-text-align:center;
-font-size:22px;
-font-weight:bold;
-}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    strong{color:rgba(255,255,255,.90)}
 
-header span{color:#f2c9d4;}
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,11,16,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      height:70px; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, var(--brand), rgba(242,201,212,.2) 55%, transparent 70%),
+        radial-gradient(circle at 70% 70%, var(--brand2), rgba(201,242,229,.16) 55%, transparent 70%),
+        rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    nav ul{
+      list-style:none; display:flex; gap:18px; padding:0; margin:0;
+      align-items:center;
+    }
+    nav a{
+      font-weight:700;
+      color:var(--muted);
+      padding:10px 10px;
+      border-radius:12px;
+      transition: .2s ease;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .nav-cta{display:flex; gap:10px; align-items:center;}
 
-.hero{
-padding:50px 20px;
-text-align:center;
-background:linear-gradient(135deg,#1a1a22,#0b0b10);
-}
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(242,201,212,.24), rgba(201,242,229,.18));
+      border-color: rgba(242,201,212,.35);
+    }
+    .btn.whats{
+      background: rgba(37, 211, 102, .14);
+      border-color: rgba(37, 211, 102, .35);
+    }
+    .btn.led{
+      background: rgba(242,201,212,.16);
+      border-color: rgba(242,201,212,.40);
+    }
 
-.hero h1{
-font-size:36px;
-margin-bottom:15px;
-}
+    /* Mobile menu */
+    .menu-btn{display:none}
+    .drawer{
+      display:none;
+      position: fixed;
+      inset: 70px 14px auto 14px;
+      z-index: 49;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(11,11,16,.85);
+      backdrop-filter: blur(14px);
+      padding: 12px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+    }
+    .drawer a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 14px;
+      color: rgba(255,255,255,.82);
+      font-weight: 900;
+    }
+    .drawer a:hover{background: rgba(255,255,255,.06)}
+    .drawer.open{display:block}
 
-.hero p{
-max-width:600px;
-margin:auto;
-line-height:1.6;
-color:#ddd;
-}
+    /* Hero */
+    .hero{padding: 56px 0 18px;}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .hero-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card .inner{padding: 28px}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:900;
+      font-size: 13px;
+    }
+    .hero h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -.6px;
+    }
+    .hero p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px}
+    .hero-note{margin-top: 16px; color: rgba(255,255,255,.62); font-size: 13px; line-height:1.5}
+    .glow{
+      position:absolute; inset:-120px -120px auto auto;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle at 30% 30%, rgba(242,201,212,.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
 
-.btn{
-display:inline-block;
-margin:10px;
-padding:15px 25px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
+    .hero-side{
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      justify-content:space-between;
+    }
+    .stat{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+    }
+    .stat strong{display:block; font-size: 18px}
+    .stat span{color:var(--muted); font-weight:700; font-size: 13px}
 
-.btn-primary{
-background:#f2c9d4;
-color:#000;
-}
+    /* Sections */
+    section{padding: 38px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom: 14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.3px;
+    }
+    .section-title p{
+      margin:0;
+      color: var(--muted);
+      font-weight:700;
+      max-width: 70ch;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-.btn-whats{
-background:#25D366;
-color:#000;
-}
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      font-weight:900;
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .card h3{margin:10px 0 8px; font-size: 16px}
+    .card p{margin:0; color: var(--muted); font-size: 14px; line-height: 1.55}
+    .price{
+      margin-top: 10px;
+      font-weight: 950;
+      font-size: 20px;
+      letter-spacing: -.2px;
+    }
+    .price small{font-size: 12px; color: rgba(255,255,255,.62); font-weight:800}
 
-.section{
-padding:40px 20px;
-max-width:1000px;
-margin:auto;
-}
+    /* LED highlight */
+    .led-wrap{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .led-box{
+      border-radius: var(--radius2);
+      border:1px solid rgba(242,201,212,.25);
+      background: linear-gradient(135deg, rgba(242,201,212,.16), rgba(255,255,255,.03));
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .led-box .glow2{
+      position:absolute; inset:auto -160px -160px auto;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle at 40% 40%, rgba(201,242,229,.22), transparent 60%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+    .list{
+      margin: 14px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid; gap:10px;
+    }
+    .list li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      line-height:1.45;
+      font-weight:700;
+      font-size: 14px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(242,201,212,.8);
+      margin-top: 6px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 4px rgba(242,201,212,.12);
+    }
 
-.section h2{
-text-align:center;
-margin-bottom:25px;
-}
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .form input, .form textarea, .form select{
+      width:100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      color: var(--text);
+      outline:none;
+      font-weight:700;
+      transition: .2s ease;
+    }
+    .form input:focus, .form textarea:focus, .form select:focus{
+      border-color: rgba(242,201,212,.35);
+      box-shadow: 0 0 0 4px rgba(242,201,212,.08);
+    }
+    .form label{
+      display:block;
+      margin: 10px 0 8px;
+      color: rgba(255,255,255,.75);
+      font-weight:900;
+      font-size: 13px
+    }
+    .form textarea{min-height: 110px; resize: vertical}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap: 10px}
+    .mini{color:var(--muted); font-size: 12px; margin-top: 10px; line-height:1.5}
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    /* Testimonials */
+    .quote{position:relative; overflow:hidden;}
+    .quote:before{
+      content:"“";
+      position:absolute;
+      top:-18px; left:14px;
+      font-size: 84px;
+      color: rgba(242,201,212,.22);
+      font-weight:900;
+      line-height:1;
+    }
 
-.card{
-background:#16161f;
-padding:20px;
-border-radius:15px;
-}
+    /* Footer */
+    footer{
+      padding: 26px 0 40px;
+      color: rgba(255,255,255,.58);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .foot{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .links{display:flex; gap:12px; flex-wrap:wrap}
+    .links a{
+      color: rgba(255,255,255,.68);
+      font-weight:900;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .links a:hover{background: rgba(255,255,255,.06)}
 
-.price{
-font-size:26px;
-color:#f2c9d4;
-font-weight:bold;
-}
+    /* Whats floating button */
+    .floating-whats{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(37, 211, 102, .18);
+      border: 1px solid rgba(37, 211, 102, .40);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      font-weight: 950;
+      color: var(--text);
+      transition: transform .15s ease, background .2s ease;
+    }
+    .floating-whats:hover{transform: translateY(-2px); background: rgba(37, 211, 102, .22)}
+    .wa-ico{
+      width: 38px; height: 38px;
+      border-radius: 999px;
+      background: rgba(37, 211, 102, .22);
+      border:1px solid rgba(37, 211, 102, .35);
+      display:grid; place-items:center;
+      font-size: 18px;
+    }
 
-footer{
-background:#111;
-padding:20px;
-text-align:center;
-font-size:14px;
-color:#aaa;
-}
-
-.floating{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:15px 20px;
-border-radius:40px;
-font-weight:bold;
-color:#000;
-text-decoration:none;
-}
-
-</style>
+    /* Mobile */
+    @media (max-width: 920px){
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .hero{padding-top: 42px}
+      .hero-grid{grid-template-columns: 1fr}
+      .led-wrap{grid-template-columns: 1fr}
+      .grid{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Ir para o início">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; color:rgba(255,255,255,.78); font-weight:950;">Estética Mavi</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.55); font-weight:800;">Ituverava • SP</div>
+        </div>
+      </a>
 
-<header>
-Estética <span>Mavi</span> • Ituverava-SP
-</header>
+      <nav aria-label="Menu principal">
+        <ul>
+          <li><a href="#ledday">LED Day</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#agendar">Agendar</a></li>
+        </ul>
+      </nav>
 
-<section class="hero">
+      <div class="nav-cta">
+        <button class="btn menu-btn" id="menuBtn" type="button">☰ Menu</button>
+        <a class="btn whats" id="topWhats" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn primary" href="#agendar">Agendar</a>
+      </div>
+    </div>
 
-<h1>LED Day Terapêutico por apenas R$90</h1>
+    <div class="wrap">
+      <div class="drawer" id="drawer" aria-label="Menu mobile">
+        <a href="#ledday">LED Day</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#agendar">Agendar</a>
+      </div>
+    </div>
+  </header>
 
-<p>
-Tratamento com luz LED para acne, manchas, oleosidade e rejuvenescimento.
-Inclui avaliação personalizada.
-</p>
+  <main id="inicio" class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-card">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="inner">
+          <span class="badge">🔥 Principal serviço da Estética Mavi</span>
+          <h1>LED Day Terapêutico por <span style="color:rgba(242,201,212,.95)">R$ 90</span> em Ituverava-SP</h1>
+          <p>
+            Tratamento com luz LED para <strong>acne</strong>, <strong>manchas</strong>, <strong>oleosidade</strong> e
+            <strong>rejuvenescimento</strong>. Atendimento individual e orientação personalizada.
+          </p>
 
-<a href="#" id="btnLed" class="btn btn-primary">💖 Agendar LED Day Agora</a>
-<a href="#" id="btnWhats" class="btn btn-whats">💬 WhatsApp</a>
+          <div class="hero-actions">
+            <a class="btn led" id="heroLed" href="#" target="_blank" rel="noopener">💖 Agendar LED Day agora</a>
+            <a class="btn whats" id="heroWhats" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn" href="#servicos">Ver outros serviços</a>
+          </div>
 
-<p style="margin-top:15px;font-size:14px;color:#aaa;">
-Vagas limitadas por semana • Atendimento individual
-</p>
+          <div class="hero-note">
+            Horários fixos: 09h • 11h • 14h • 16h • 18h<br>
+            📍 Ituverava-SP • Vagas limitadas por semana • Atendimento com hora marcada
+          </div>
+        </div>
+      </div>
 
-</section>
+      <aside class="hero-card hero-side" aria-label="Destaques">
+        <div class="stat">
+          <strong>📍 Localização</strong>
+          <span>Ituverava • SP</span>
+        </div>
+        <div class="stat">
+          <strong>💬 WhatsApp</strong>
+          <span>(16) 99462-2975</span>
+        </div>
+        <div class="stat">
+          <strong>📷 Instagram</strong>
+          <span><a href="https://www.instagram.com/estetica_mavi/" target="_blank" rel="noopener" style="text-decoration:underline; color:rgba(255,255,255,.86)">@estetica_mavi</a></span>
+        </div>
+        <div class="stat">
+          <strong>✅ Pacote LED</strong>
+          <span>5 sessões por R$ 399</span>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-<section class="section">
+  <section id="ledday">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>LED Day</h2>
+          <p>Seu serviço principal — foco em resultado e acompanhamento. Clique e já peça horário no WhatsApp.</p>
+        </div>
+      </div>
 
-<h2>Benefícios do LED Day</h2>
+      <div class="led-wrap">
+        <div class="led-box">
+          <div class="glow2" aria-hidden="true"></div>
+          <span class="pill">💖 Sessão avulsa • R$ 90</span>
+          <h3 style="margin:12px 0 8px; font-size:18px;">Para quem é</h3>
+          <ul class="list">
+            <li><span class="dot"></span> Acne e inflamação</li>
+            <li><span class="dot"></span> Oleosidade e poros aparentes</li>
+            <li><span class="dot"></span> Manchas e tom irregular</li>
+            <li><span class="dot"></span> Rejuvenescimento e viço</li>
+          </ul>
 
-<div class="cards">
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn led" id="ledCta1" href="#" target="_blank" rel="noopener">Agendar LED Day (R$90)</a>
+            <a class="btn" href="#agendar">Preferir formulário</a>
+          </div>
 
-<div class="card">
-<h3>✨ Reduz Acne</h3>
-<p>Diminui inflamações e controla oleosidade.</p>
-</div>
+          <div class="mini">
+            Dica: melhores resultados costumam aparecer com regularidade (pacote).
+          </div>
+        </div>
 
-<div class="card">
-<h3>💖 Rejuvenesce</h3>
-<p>Estimula colágeno e melhora textura.</p>
-</div>
+        <div class="card" style="border-color: rgba(242,201,212,.22);">
+          <span class="pill">📦 Pacote recomendado</span>
+          <h3 style="margin:10px 0 6px;">Pacote LED Day • 5 sessões</h3>
+          <p>Mais resultado + economia + acompanhamento (ideal para tratamento).</p>
+          <div class="price">R$ 399 <small>• (5 sessões)</small></div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" id="ledPackCta" href="#" target="_blank" rel="noopener">Quero o pacote</a>
+            <a class="btn whats" id="ledWhats2" href="#" target="_blank" rel="noopener">Tirar dúvidas</a>
+          </div>
 
-<div class="card">
-<h3>🌿 Clareia Manchas</h3>
-<p>Ajuda a uniformizar o tom da pele.</p>
-</div>
+          <div class="mini">
+            Você atende sozinha: pacote ajuda a organizar agenda e garantir evolução do tratamento.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Serviços e valores</h2>
+          <p>Além do LED Day, você pode agendar outros procedimentos. Clique no serviço para pedir horário no WhatsApp.</p>
+        </div>
+      </div>
 
-</section>
+      <div class="grid">
+        <article class="card">
+          <span class="pill">🔥 Principal</span>
+          <h3>LED Day Terapêutico</h3>
+          <p>Acne • manchas • oleosidade • rejuvenescimento.</p>
+          <div class="price">R$ 90</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn led" data-service="LED Day" data-price="R$ 90" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
 
-<section class="section">
+        <article class="card">
+          <span class="pill">🧼 Limpeza</span>
+          <h3>Limpeza de Pele</h3>
+          <p>Limpeza profunda e sensação de pele renovada.</p>
+          <div class="price">R$ 149</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn whats" data-service="Limpeza de Pele" data-price="R$ 149" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
 
-<h2>Pacote Especial</h2>
+        <article class="card">
+          <span class="pill">💧 Hidratação</span>
+          <h3>Hidratação Facial</h3>
+          <p>Glow, viço e melhora da textura.</p>
+          <div class="price">R$ 129</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn whats" data-service="Hidratação Facial" data-price="R$ 129" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
 
-<div class="card" style="text-align:center;max-width:400px;margin:auto;">
+        <article class="card">
+          <span class="pill">🕊️ Anti-idade</span>
+          <h3>Rejuvenescimento Facial</h3>
+          <p>Firmeza, linhas finas e uniformização do tom.</p>
+          <div class="price">R$ 159</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn whats" data-service="Rejuvenescimento Facial" data-price="R$ 159" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
 
-<h3>📦 5 Sessões de LED Day</h3>
+        <article class="card">
+          <span class="pill">✨ Renovação</span>
+          <h3>Peeling Facial</h3>
+          <p>Renovação da pele e melhora da textura.</p>
+          <div class="price">R$ 139</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn whats" data-service="Peeling Facial" data-price="R$ 139" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
 
-<p class="price">R$399</p>
+        <article class="card">
+          <span class="pill">🧴 Desinchaço</span>
+          <h3>Drenagem Facial</h3>
+          <p>Ajuda a reduzir retenção e melhora a aparência.</p>
+          <div class="price">R$ 99</div>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn whats" data-service="Drenagem Facial" data-price="R$ 99" type="button">Agendar</button>
+            <a class="btn" href="#agendar">Formulário</a>
+          </div>
+        </article>
+      </div>
 
-<p>
-Mais resultado, mais economia e acompanhamento.
-</p>
+      <div class="mini" style="margin-top:12px;">
+        Quer que eu coloque fotos reais e “antes/depois” depois? Isso aumenta muito os agendamentos.
+      </div>
+    </div>
+  </section>
 
-<a href="#" id="btnPack" class="btn btn-primary">Quero o Pacote</a>
+  <section id="sobre">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Sobre a Estética Mavi</h2>
+          <p>Atendimento individual, avaliação e protocolo sob medida — você sempre vai saber o “porquê” de cada etapa.</p>
+        </div>
+      </div>
 
-</div>
+      <div class="led-wrap">
+        <div class="card">
+          <span class="pill">✅ O que você recebe</span>
+          <ul class="list">
+            <li><span class="dot"></span> Avaliação facial (objetivo + tipo de pele)</li>
+            <li><span class="dot"></span> Procedimento com técnica adequada e cuidado</li>
+            <li><span class="dot"></span> Orientações simples para cuidar em casa</li>
+            <li><span class="dot"></span> Acompanhamento quando fechar pacote</li>
+          </ul>
+        </div>
 
-</section>
+        <div class="led-box">
+          <span class="pill">📍 Ituverava • SP</span>
+          <h3 style="margin:12px 0 6px;">Agende em 1 minuto</h3>
+          <p style="margin:0; color:var(--muted); font-weight:700; line-height:1.6;">
+            Clique no WhatsApp, escolha o serviço e selecione um dos horários fixos.
+            A mensagem vai pronta e você só confirma.
+          </p>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn whats" id="aboutWhats" href="#" target="_blank" rel="noopener">💬 Falar agora</a>
+            <a class="btn primary" href="#agendar">📅 Agendar</a>
+          </div>
+          <div class="mini">Horários: 09h • 11h • 14h • 16h • 18h</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
+  <section id="agendar">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Agendamento</h2>
+          <p>Preencha e clique em “Enviar no WhatsApp”. A mensagem vai organizada com serviço, horário e objetivo.</p>
+        </div>
+      </div>
 
-<h2>Contato</h2>
+      <div class="contact">
+        <div class="card form">
+          <div class="row">
+            <div>
+              <label for="name">Seu nome</label>
+              <input id="name" type="text" placeholder="Ex.: Maria" autocomplete="name" />
+            </div>
+            <div>
+              <label for="phone">Seu WhatsApp</label>
+              <input id="phone" type="tel" placeholder="(DD) 9xxxx-xxxx" autocomplete="tel" />
+            </div>
+          </div>
 
-<div class="card" style="max-width:500px;margin:auto;">
+          <div class="row">
+            <div>
+              <label for="service">Serviço</label>
+              <select id="service">
+                <option value="LED Day">LED Day (R$ 90)</option>
+                <option value="Pacote LED Day (5 sessões)">Pacote LED Day (R$ 399)</option>
+                <option value="Limpeza de Pele">Limpeza de Pele (R$ 149)</option>
+                <option value="Hidratação Facial">Hidratação Facial (R$ 129)</option>
+                <option value="Rejuvenescimento Facial">Rejuvenescimento Facial (R$ 159)</option>
+                <option value="Peeling Facial">Peeling Facial (R$ 139)</option>
+                <option value="Drenagem Facial">Drenagem Facial (R$ 99)</option>
+              </select>
+            </div>
+            <div>
+              <label for="day">Dia (opcional)</label>
+              <input id="day" type="text" placeholder="Ex.: Sábado / 15/02" />
+            </div>
+          </div>
 
-<p><strong>📍 Cidade:</strong> Ituverava-SP</p>
-<p><strong>📲 WhatsApp:</strong> (16) 99462-2975</p>
-<p><strong>📷 Instagram:</strong> <a href="https://www.instagram.com/estetica_mavi/" target="_blank" style="color:#f2c9d4">@estetica_mavi</a></p>
+          <div class="row">
+            <div>
+              <label for="time">Horário</label>
+              <select id="time">
+                <option value="09:00">09:00</option>
+                <option value="11:00">11:00</option>
+                <option value="14:00">14:00</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+              </select>
+            </div>
+            <div>
+              <label for="goal">Seu objetivo (opcional)</label>
+              <input id="goal" type="text" placeholder="Ex.: acne, manchas, oleosidade..." />
+            </div>
+          </div>
 
-</div>
+          <label for="msg">Mensagem</label>
+          <textarea id="msg" placeholder="Se quiser, descreva sua situação (tempo, sensibilidade, etc.)"></textarea>
 
-</section>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn primary" id="sendWa" type="button">Enviar no WhatsApp</button>
+            <button class="btn" id="clear" type="button">Limpar</button>
+          </div>
 
-<footer>
+          <div class="mini">
+            Estética Mavi • Ituverava-SP • WhatsApp: (16) 99462-2975 • Instagram: @estetica_mavi
+          </div>
+        </div>
 
-Estética Mavi © <span id="year"></span><br>
-Agende pelo WhatsApp
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Contato rápido</h3>
+          <p style="margin:0; color:var(--muted); font-weight:700; line-height:1.6;">
+            Quer só pedir valores e horários? Clique abaixo e fale direto comigo.
+          </p>
 
-</footer>
+          <div style="margin-top:14px; display:grid; gap:10px;">
+            <a class="btn whats" id="contactWhats" href="#" target="_blank" rel="noopener">💬 WhatsApp (rápido)</a>
+            <a class="btn led" id="contactLed" href="#" target="_blank" rel="noopener">💖 Quero LED Day (R$90)</a>
+            <a class="btn" href="#inicio">Voltar ao topo</a>
+          </div>
 
-<a href="#" id="floatBtn" class="floating">💬 WhatsApp</a>
+          <div style="margin-top:18px; border-top:1px solid rgba(255,255,255,.08); padding-top:14px;">
+            <div class="mini"><strong>📍 Cidade:</strong> Ituverava • SP</div>
+            <div class="mini"><strong>🕘 Horários:</strong> 09h • 11h • 14h • 16h • 18h</div>
+            <div class="mini"><strong>📷 Instagram:</strong> <a href="https://www.instagram.com/estetica_mavi/" target="_blank" rel="noopener" style="text-decoration:underline;">@estetica_mavi</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
+  <section id="depoimentos">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Depoimentos</h2>
+          <p>Substitua por depoimentos reais depois (isso aumenta MUITO conversão).</p>
+        </div>
+      </div>
 
-const NUMBER = "5516994622975";
+      <div class="grid">
+        <article class="card quote">
+          <h3>Atendimento excelente</h3>
+          <p>“Explicou tudo com calma e montou um protocolo perfeito pro meu objetivo.”</p>
+          <div class="mini">— Cliente (exemplo)</div>
+        </article>
 
-function link(msg){
-return "https://wa.me/"+NUMBER+"?text="+encodeURIComponent(msg);
-}
+        <article class="card quote">
+          <h3>LED Day fez diferença</h3>
+          <p>“Senti melhora na acne e na oleosidade, e a pele ficou mais uniforme.”</p>
+          <div class="mini">— Cliente (exemplo)</div>
+        </article>
 
-document.getElementById("btnLed").href = link(
-"Olá! Vim pelo site da Estética Mavi e quero agendar LED Day (R$90). Tem horário disponível?"
-);
+        <article class="card quote">
+          <h3>Super recomendo</h3>
+          <p>“Ambiente organizado, atendimento cuidadoso e resultado visível.”</p>
+          <div class="mini">— Cliente (exemplo)</div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-document.getElementById("btnWhats").href = link(
-"Olá! Vim pelo site da Estética Mavi e gostaria de informações sobre o LED Day."
-);
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <div class="brand" style="gap:10px">
+          <div class="logo" aria-hidden="true" style="width:34px;height:34px;border-radius:13px"></div>
+          <div>
+            <strong>Estética Mavi</strong>
+            <div style="font-size:12px; color:rgba(255,255,255,.55); font-weight:800;">© <span id="year"></span> • Ituverava-SP</div>
+          </div>
+        </div>
+        <div style="margin-top:10px; color:rgba(255,255,255,.56); font-weight:700; font-size:12px; line-height:1.6;">
+          WhatsApp: (16) 99462-2975 • Instagram: @estetica_mavi
+        </div>
+      </div>
 
-document.getElementById("btnPack").href = link(
-"Olá! Vim pelo site da Estética Mavi e tenho interesse no pacote de 5 sessões de LED Day (R$399)."
-);
+      <div class="links" aria-label="Links rápidos">
+        <a href="#ledday">LED Day</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#agendar">Agendar</a>
+        <a href="https://www.instagram.com/estetica_mavi/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" id="footerWhats">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
 
-document.getElementById("floatBtn").href = link(
-"Olá! Vim pelo site da Estética Mavi e quero agendar meu atendimento."
-);
+  <a class="floating-whats" id="floatWhats" href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <span class="wa-ico">💬</span>
+    Falar no WhatsApp
+  </a>
 
-document.getElementById("year").innerText = new Date().getFullYear();
+  <script>
+    // Config principal
+    const WHATSAPP_NUMBER = "5516994622975";
+    const INSTAGRAM_URL = "https://www.instagram.com/estetica_mavi/";
 
-</script>
+    function waLink(message){
+      const text = encodeURIComponent(message);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    }
 
+    // Links padrão
+    const DEFAULT_MESSAGE = "Olá! Vim pelo site da Estética Mavi (Ituverava-SP) e gostaria de agendar um atendimento. Pode me passar horários disponíveis?";
+
+    function setAllWhatsLinks(){
+      const ids = ["topWhats","heroWhats","aboutWhats","contactWhats","footerWhats","floatWhats"];
+      ids.map(id => document.getElementById(id)).filter(Boolean).forEach(a => a.href = waLink(DEFAULT_MESSAGE));
+    }
+
+    // Links específicos LED
+    function setLedLinks(){
+      const ledMsg = "Olá! Vim pelo site da Estética Mavi (Ituverava-SP) e quero agendar LED Day (R$90). Tenho preferência por um dos horários fixos. Pode me ajudar?";
+      const ledPackMsg = "Olá! Vim pelo site da Estética Mavi (Ituverava-SP) e tenho interesse no pacote de LED Day (5 sessões • R$399). Pode me explicar como funciona e horários?";
+      const a1 = document.getElementById("heroLed");
+      const a2 = document.getElementById("ledCta1");
+      const a3 = document.getElementById("ledPackCta");
+      const a4 = document.getElementById("ledWhats2");
+      const a5 = document.getElementById("contactLed");
+      if(a1) a1.href = waLink(ledMsg);
+      if(a2) a2.href = waLink(ledMsg);
+      if(a3) a3.href = waLink(ledPackMsg);
+      if(a4) a4.href = waLink("Olá! Vim pelo site da Estética Mavi e queria tirar dúvidas sobre LED Day.");
+      if(a5) a5.href = waLink("Olá! Quero agendar LED Day (R$90). Qual horário tem disponível?");
+    }
+
+    // Mobile menu
+    (function(){
+      const btn = document.getElementById("menuBtn");
+      const drawer = document.getElementById("drawer");
+      if(!btn || !drawer) return;
+
+      btn.addEventListener("click", () => drawer.classList.toggle("open"));
+      drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", () => drawer.classList.remove("open")));
+      document.addEventListener("click", (e) => {
+        const isInside = drawer.contains(e.target) || btn.contains(e.target);
+        if(!isInside) drawer.classList.remove("open");
+      });
+    })();
+
+    // Botões de serviço -> WhatsApp com serviço + preço
+    document.querySelectorAll("[data-service]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const service = btn.getAttribute("data-service") || "Procedimento";
+        const price = btn.getAttribute("data-price") || "";
+        const msg = `Olá! Vim pelo site da Estética Mavi (Ituverava-SP). Quero agendar: ${service}${price ? " ("+price+")" : ""}. Qual horário tem disponível?`;
+        window.open(waLink(msg), "_blank", "noopener");
+      });
+    });
+
+    // Form -> WhatsApp
+    document.getElementById("sendWa").addEventListener("click", () => {
+      const name = (document.getElementById("name").value || "").trim();
+      const phone = (document.getElementById("phone").value || "").trim();
+      const service = document.getElementById("service").value;
+      const day = (document.getElementById("day").value || "").trim();
+      const time = document.getElementById("time").value;
+      const goal = (document.getElementById("goal").value || "").trim();
+      const msg = (document.getElementById("msg").value || "").trim();
+
+      const parts = [];
+      parts.push("Olá! Vim pelo site da Estética Mavi (Ituverava-SP) e gostaria de agendar um atendimento.");
+      if(name) parts.push(`Nome: ${name}`);
+      if(phone) parts.push(`Meu WhatsApp: ${phone}`);
+      parts.push(`Serviço: ${service}`);
+      if(day) parts.push(`Dia: ${day}`);
+      parts.push(`Horário: ${time}`);
+      if(goal) parts.push(`Objetivo: ${goal}`);
+      if(msg) parts.push(`Observações: ${msg}`);
+
+      window.open(waLink(parts.join("\n")), "_blank", "noopener");
+    });
+
+    // Clear form
+    document.getElementById("clear").addEventListener("click", () => {
+      ["name","phone","day","goal","msg"].forEach(id => document.getElementById(id).value = "");
+      document.getElementById("service").value = "LED Day";
+      document.getElementById("time").value = "09:00";
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Init
+    setAllWhatsLinks();
+    setLedLinks();
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click",(e)=>{
+        const href = a.getAttribute("href");
+        if(!href || href === "#") return;
+        const el = document.querySelector(href);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
 </body>
 </html>
