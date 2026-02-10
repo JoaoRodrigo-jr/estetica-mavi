@@ -342,6 +342,91 @@
       line-height:1;
     }
 
+    /* Antes e Depois (ilustrativo) */
+    .ad-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .ad-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .ad-tag{
+      font-weight: 900;
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .ad-compare{
+      position: relative;
+      margin-top: 12px;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      aspect-ratio: 4 / 3;
+    }
+    .ad-img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .ad-after{
+      clip-path: inset(0 0 0 50%);
+    }
+    .ad-slider{
+      position:absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      width: calc(100% - 24px);
+      z-index: 5;
+      accent-color: rgba(242,201,212,.95);
+    }
+    .ad-divider{
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:50%;
+      width: 2px;
+      background: rgba(242,201,212,.85);
+      box-shadow: 0 0 0 4px rgba(242,201,212,.10);
+      z-index: 4;
+    }
+    .ad-labels{
+      position:absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display:flex;
+      justify-content:space-between;
+      z-index: 6;
+      pointer-events:none;
+    }
+    .ad-labels span{
+      font-size: 12px;
+      font-weight: 950;
+      color: rgba(0,0,0,.85);
+      background: rgba(242,201,212,.92);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .ad-disclaimer{
+      margin-top: 10px;
+      color: rgba(255,255,255,.60);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     /* Footer */
     footer{
       padding: 26px 0 40px;
@@ -403,6 +488,7 @@
       .led-wrap{grid-template-columns: 1fr}
       .grid{grid-template-columns: 1fr}
       .contact{grid-template-columns: 1fr}
+      .ad-grid{grid-template-columns: 1fr}
     }
   </style>
 </head>
@@ -422,6 +508,7 @@
         <ul>
           <li><a href="#ledday">LED Day</a></li>
           <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#antes-depois">Antes e Depois</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#agendar">Agendar</a></li>
         </ul>
@@ -438,6 +525,7 @@
       <div class="drawer" id="drawer" aria-label="Menu mobile">
         <a href="#ledday">LED Day</a>
         <a href="#servicos">Serviços</a>
+        <a href="#antes-depois">Antes e Depois</a>
         <a href="#sobre">Sobre</a>
         <a href="#agendar">Agendar</a>
       </div>
@@ -617,7 +705,69 @@
       </div>
 
       <div class="mini" style="margin-top:12px;">
-        Quer que eu coloque fotos reais e “antes/depois” depois? Isso aumenta muito os agendamentos.
+        Quer que eu adicione um botão “Ver horários” que já abre WhatsApp com 09h/11h/14h/16h/18h?
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTES E DEPOIS (ILUSTRATIVO) -->
+  <section id="antes-depois">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Antes e Depois</h2>
+          <p>Seção ilustrativa (placeholders). Troque depois por fotos reais com autorização para aumentar conversão.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn led" id="adLedCta" href="#" target="_blank" rel="noopener">💖 Quero LED Day</a>
+          <a class="btn" href="#agendar">Agendar</a>
+        </div>
+      </div>
+
+      <div class="ad-grid">
+        <article class="card">
+          <div class="ad-head">
+            <span class="pill">✨ Caso 1</span>
+            <span class="ad-tag">Imagem ilustrativa</span>
+          </div>
+
+          <div class="ad-compare" data-compare>
+            <img class="ad-img ad-before" id="adBefore1" alt="Antes (ilustrativo) - Caso 1" loading="lazy">
+            <img class="ad-img ad-after"  id="adAfter1"  alt="Depois (ilustrativo) - Caso 1" loading="lazy">
+            <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+            <div class="ad-divider" aria-hidden="true"></div>
+            <div class="ad-labels" aria-hidden="true">
+              <span>Antes</span>
+              <span>Depois</span>
+            </div>
+          </div>
+
+          <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
+        </article>
+
+        <article class="card">
+          <div class="ad-head">
+            <span class="pill">✨ Caso 2</span>
+            <span class="ad-tag">Imagem ilustrativa</span>
+          </div>
+
+          <div class="ad-compare" data-compare>
+            <img class="ad-img ad-before" id="adBefore2" alt="Antes (ilustrativo) - Caso 2" loading="lazy">
+            <img class="ad-img ad-after"  id="adAfter2"  alt="Depois (ilustrativo) - Caso 2" loading="lazy">
+            <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+            <div class="ad-divider" aria-hidden="true"></div>
+            <div class="ad-labels" aria-hidden="true">
+              <span>Antes</span>
+              <span>Depois</span>
+            </div>
+          </div>
+
+          <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
+        </article>
+      </div>
+
+      <div class="mini" style="margin-top:12px;">
+        Quando você tiver fotos reais, eu te digo como cortar e padronizar para ficar “clínica premium”.
       </div>
     </div>
   </section>
@@ -801,6 +951,7 @@
       <div class="links" aria-label="Links rápidos">
         <a href="#ledday">LED Day</a>
         <a href="#servicos">Serviços</a>
+        <a href="#antes-depois">Antes e Depois</a>
         <a href="#agendar">Agendar</a>
         <a href="https://www.instagram.com/estetica_mavi/" target="_blank" rel="noopener">Instagram</a>
         <a href="#" id="footerWhats">WhatsApp</a>
@@ -816,7 +967,6 @@
   <script>
     // Config principal
     const WHATSAPP_NUMBER = "5516994622975";
-    const INSTAGRAM_URL = "https://www.instagram.com/estetica_mavi/";
 
     function waLink(message){
       const text = encodeURIComponent(message);
@@ -840,11 +990,13 @@
       const a3 = document.getElementById("ledPackCta");
       const a4 = document.getElementById("ledWhats2");
       const a5 = document.getElementById("contactLed");
+      const a6 = document.getElementById("adLedCta");
       if(a1) a1.href = waLink(ledMsg);
       if(a2) a2.href = waLink(ledMsg);
       if(a3) a3.href = waLink(ledPackMsg);
       if(a4) a4.href = waLink("Olá! Vim pelo site da Estética Mavi e queria tirar dúvidas sobre LED Day.");
       if(a5) a5.href = waLink("Olá! Quero agendar LED Day (R$90). Qual horário tem disponível?");
+      if(a6) a6.href = waLink("Olá! Vi a seção Antes e Depois no site da Estética Mavi e quero agendar LED Day (R$90). Qual horário tem disponível?");
     }
 
     // Mobile menu
@@ -903,6 +1055,60 @@
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Antes e Depois: gerar imagens ilustrativas (placeholders) via SVG
+    function svgDataUri({title, subtitle, tone="before"}){
+      const bg1 = tone === "before" ? "#1a1a22" : "#141422";
+      const bg2 = tone === "before" ? "#2a1c22" : "#14221c";
+      const accent = tone === "before" ? "#f2c9d4" : "#c9f2e5";
+      const text = tone === "before" ? "ANTES" : "DEPOIS";
+      const svg =
+`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${bg1}"/>
+      <stop offset="1" stop-color="${bg2}"/>
+    </linearGradient>
+    <radialGradient id="r" cx="30%" cy="25%" r="65%">
+      <stop offset="0" stop-color="${accent}" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <rect width="100%" height="100%" fill="url(#r)"/>
+  <circle cx="920" cy="220" r="210" fill="${accent}" fill-opacity="0.10"/>
+  <circle cx="290" cy="690" r="260" fill="${accent}" fill-opacity="0.08"/>
+  <text x="60" y="120" font-family="Arial, Helvetica, sans-serif" font-size="54" fill="white" fill-opacity="0.92" font-weight="800">${title}</text>
+  <text x="60" y="180" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="white" fill-opacity="0.70" font-weight="600">${subtitle}</text>
+
+  <rect x="60" y="720" rx="28" ry="28" width="300" height="90" fill="${accent}" fill-opacity="0.88"/>
+  <text x="210" y="778" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#0b0b10" font-weight="900">${text}</text>
+
+  <text x="1140" y="860" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="white" fill-opacity="0.55" font-weight="700">Imagem ilustrativa</text>
+</svg>`;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    // Set placeholder images
+    document.getElementById("adBefore1").src = svgDataUri({title:"LED Day", subtitle:"Textura e oleosidade (exemplo)", tone:"before"});
+    document.getElementById("adAfter1").src  = svgDataUri({title:"LED Day", subtitle:"Pele mais uniforme (exemplo)", tone:"after"});
+    document.getElementById("adBefore2").src = svgDataUri({title:"LED Day", subtitle:"Inflamação/acne (exemplo)", tone:"before"});
+    document.getElementById("adAfter2").src  = svgDataUri({title:"LED Day", subtitle:"Aparência mais calma (exemplo)", tone:"after"});
+
+    // Antes e Depois: slider comparativo
+    document.querySelectorAll("[data-compare]").forEach(box => {
+      const slider = box.querySelector(".ad-slider");
+      const afterImg = box.querySelector(".ad-after");
+      const divider = box.querySelector(".ad-divider");
+
+      function update(){
+        const v = Number(slider.value);
+        afterImg.style.clipPath = `inset(0 0 0 ${v}%)`;
+        divider.style.left = `${v}%`;
+      }
+      slider.addEventListener("input", update);
+      update();
+    });
 
     // Init
     setAllWhatsLinks();
