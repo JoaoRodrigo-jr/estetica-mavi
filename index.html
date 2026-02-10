@@ -703,10 +703,6 @@
           </div>
         </article>
       </div>
-
-      <div class="mini" style="margin-top:12px;">
-        Quer que eu adicione um botão “Ver horários” que já abre WhatsApp com 09h/11h/14h/16h/18h?
-      </div>
     </div>
   </section>
 
@@ -725,43 +721,67 @@
       </div>
 
       <div class="ad-grid">
+        <!-- Caso 1 -->
         <article class="card">
           <div class="ad-head">
             <span class="pill">✨ Caso 1</span>
             <span class="ad-tag">Imagem ilustrativa</span>
           </div>
-
           <div class="ad-compare" data-compare>
             <img class="ad-img ad-before" id="adBefore1" alt="Antes (ilustrativo) - Caso 1" loading="lazy">
             <img class="ad-img ad-after"  id="adAfter1"  alt="Depois (ilustrativo) - Caso 1" loading="lazy">
             <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
             <div class="ad-divider" aria-hidden="true"></div>
-            <div class="ad-labels" aria-hidden="true">
-              <span>Antes</span>
-              <span>Depois</span>
-            </div>
+            <div class="ad-labels" aria-hidden="true"><span>Antes</span><span>Depois</span></div>
           </div>
-
           <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
         </article>
 
+        <!-- Caso 2 -->
         <article class="card">
           <div class="ad-head">
             <span class="pill">✨ Caso 2</span>
             <span class="ad-tag">Imagem ilustrativa</span>
           </div>
-
           <div class="ad-compare" data-compare>
             <img class="ad-img ad-before" id="adBefore2" alt="Antes (ilustrativo) - Caso 2" loading="lazy">
             <img class="ad-img ad-after"  id="adAfter2"  alt="Depois (ilustrativo) - Caso 2" loading="lazy">
             <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
             <div class="ad-divider" aria-hidden="true"></div>
-            <div class="ad-labels" aria-hidden="true">
-              <span>Antes</span>
-              <span>Depois</span>
-            </div>
+            <div class="ad-labels" aria-hidden="true"><span>Antes</span><span>Depois</span></div>
           </div>
+          <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
+        </article>
 
+        <!-- Caso 3 -->
+        <article class="card">
+          <div class="ad-head">
+            <span class="pill">✨ Caso 3</span>
+            <span class="ad-tag">Imagem ilustrativa</span>
+          </div>
+          <div class="ad-compare" data-compare>
+            <img class="ad-img ad-before" id="adBefore3" alt="Antes (ilustrativo) - Caso 3" loading="lazy">
+            <img class="ad-img ad-after"  id="adAfter3"  alt="Depois (ilustrativo) - Caso 3" loading="lazy">
+            <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+            <div class="ad-divider" aria-hidden="true"></div>
+            <div class="ad-labels" aria-hidden="true"><span>Antes</span><span>Depois</span></div>
+          </div>
+          <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
+        </article>
+
+        <!-- Caso 4 -->
+        <article class="card">
+          <div class="ad-head">
+            <span class="pill">✨ Caso 4</span>
+            <span class="ad-tag">Imagem ilustrativa</span>
+          </div>
+          <div class="ad-compare" data-compare>
+            <img class="ad-img ad-before" id="adBefore4" alt="Antes (ilustrativo) - Caso 4" loading="lazy">
+            <img class="ad-img ad-after"  id="adAfter4"  alt="Depois (ilustrativo) - Caso 4" loading="lazy">
+            <input class="ad-slider" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+            <div class="ad-divider" aria-hidden="true"></div>
+            <div class="ad-labels" aria-hidden="true"><span>Antes</span><span>Depois</span></div>
+          </div>
           <div class="ad-disclaimer">*Imagem ilustrativa. Resultados variam conforme pele e rotina.</div>
         </article>
       </div>
@@ -1056,12 +1076,12 @@
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Antes e Depois: gerar imagens ilustrativas (placeholders) via SVG
+    // Imagens ilustrativas (SVG) – seguro e leve
     function svgDataUri({title, subtitle, tone="before"}){
       const bg1 = tone === "before" ? "#1a1a22" : "#141422";
       const bg2 = tone === "before" ? "#2a1c22" : "#14221c";
       const accent = tone === "before" ? "#f2c9d4" : "#c9f2e5";
-      const text = tone === "before" ? "ANTES" : "DEPOIS";
+      const tag = tone === "before" ? "ANTES" : "DEPOIS";
       const svg =
 `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
   <defs>
@@ -1076,24 +1096,33 @@
   </defs>
   <rect width="100%" height="100%" fill="url(#g)"/>
   <rect width="100%" height="100%" fill="url(#r)"/>
-  <circle cx="920" cy="220" r="210" fill="${accent}" fill-opacity="0.10"/>
-  <circle cx="290" cy="690" r="260" fill="${accent}" fill-opacity="0.08"/>
-  <text x="60" y="120" font-family="Arial, Helvetica, sans-serif" font-size="54" fill="white" fill-opacity="0.92" font-weight="800">${title}</text>
-  <text x="60" y="180" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="white" fill-opacity="0.70" font-weight="600">${subtitle}</text>
+  <circle cx="930" cy="220" r="220" fill="${accent}" fill-opacity="0.10"/>
+  <circle cx="290" cy="700" r="270" fill="${accent}" fill-opacity="0.08"/>
+
+  <text x="60" y="120" font-family="Arial, Helvetica, sans-serif" font-size="54" fill="white" fill-opacity="0.92" font-weight="900">${title}</text>
+  <text x="60" y="180" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="white" fill-opacity="0.70" font-weight="700">${subtitle}</text>
 
   <rect x="60" y="720" rx="28" ry="28" width="300" height="90" fill="${accent}" fill-opacity="0.88"/>
-  <text x="210" y="778" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#0b0b10" font-weight="900">${text}</text>
+  <text x="210" y="778" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#0b0b10" font-weight="900">${tag}</text>
 
   <text x="1140" y="860" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="white" fill-opacity="0.55" font-weight="700">Imagem ilustrativa</text>
 </svg>`;
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
-    // Set placeholder images
-    document.getElementById("adBefore1").src = svgDataUri({title:"LED Day", subtitle:"Textura e oleosidade (exemplo)", tone:"before"});
-    document.getElementById("adAfter1").src  = svgDataUri({title:"LED Day", subtitle:"Pele mais uniforme (exemplo)", tone:"after"});
-    document.getElementById("adBefore2").src = svgDataUri({title:"LED Day", subtitle:"Inflamação/acne (exemplo)", tone:"before"});
-    document.getElementById("adAfter2").src  = svgDataUri({title:"LED Day", subtitle:"Aparência mais calma (exemplo)", tone:"after"});
+    // Set 8 placeholder images (4 casos)
+    const cases = [
+      {i:1, before:"Textura e oleosidade (exemplo)", after:"Pele mais uniforme (exemplo)"},
+      {i:2, before:"Inflamação/acne (exemplo)", after:"Aparência mais calma (exemplo)"},
+      {i:3, before:"Manchas e tom irregular (exemplo)", after:"Tom mais uniforme (exemplo)"},
+      {i:4, before:"Viço e linhas finas (exemplo)", after:"Mais glow e firmeza (exemplo)"}
+    ];
+    cases.forEach(c=>{
+      const b = document.getElementById(`adBefore${c.i}`);
+      const a = document.getElementById(`adAfter${c.i}`);
+      if(b) b.src = svgDataUri({title:"LED Day", subtitle:c.before, tone:"before"});
+      if(a) a.src = svgDataUri({title:"LED Day", subtitle:c.after, tone:"after"});
+    });
 
     // Antes e Depois: slider comparativo
     document.querySelectorAll("[data-compare]").forEach(box => {
